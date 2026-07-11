@@ -1,14 +1,25 @@
 -- add modes: debug and release
 add_rules("mode.debug", "mode.release")
+add_requires("cjson")
+add_requires("taglib")
+
+target("filemanager")
+    set_kind("object")
+    add_files("src/backend/File Management/*.h")
+    add_files("src/backend/File Management/*.c")
 
 -- add target
-target("OffBeat")
-
+target("app")
+    set_toolset("msvc")
     -- set kind
     set_kind("binary")
+    set_basename("offbeat")
+    set_optimize("fastest")
+    set_optimize("smallest")
 
+    
     -- add files
-    add_files("src/*.swift")
+    add_files("src/GUI/*.swift")
 
 --
 -- If you want to known more usage about xmake, please see https://xmake.io
